@@ -6,5 +6,5 @@
   <%= @message.message %>
 </h1>
 
-<%= link_to "Twitterに投稿する", "http://twitter.com/share?url=#{request.protocol + request.host + '/messages'}/&text=#{@message.message}%0a%0a%23ELDENRING%0a%23メッセージメーカー%0a" %> |
+<%= link_to "Twitterに投稿する", "http://twitter.com/share?url=#{request.protocol + request.host + '/messages'}/&text=#{@message.message}%0a%0a%23ELDENRING%0a%23メッセージメーカー%0a", target: :_blank, rel: "noopener noreferrer" %> |
 <%= link_to 'メッセージ一覧', messages_path %>
