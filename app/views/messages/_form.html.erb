@@ -1,0 +1,27 @@
+<%= form_with(model: message, local: true) do |form| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+        <% message.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :base_sentence_id, 'ベース文' %>
+    <%= form.select :base_sentence_id, BaseSentence.all.map{ |base_sentence| [base_sentence.sentence, base_sentence.id] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :word_id, '単語' %>
+    <%= form.grouped_collection_select(:word_id, WordCategory.all, :words, :name, :id, :word) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'メッセージを作成' %>
+  </div>
+<% end %>

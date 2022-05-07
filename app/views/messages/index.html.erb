@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messages</h1>
+<p><%= link_to '新規メッセージ作成', new_message_path %></p>
+
+<table>
+
+  <tbody>
+    <% @messages.reverse.each do |message| %>
+      <tr>
+        <td><%= message.message %></td>
+        <td><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= link_to '詳細', message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
